@@ -14,10 +14,10 @@ TaskProfiler GreenLEDProfiler;
 void setup(){
 
   Serial.begin(9600);
-  
+
   /*create tasks*/
   xTaskCreate(redLedControllerTask, "RED LED Task", 128, NULL, 1, NULL);
-  //xTaskCreate(yellowLedControllerTask, "YELLOW LED Task", 128, NULL, 1, NULL);  
+  //xTaskCreate(yellowLedControllerTask, "YELLOW LED Task", 128, NULL, 1, NULL);
   xTaskCreate(greenLedControllerTask, "GREEN LED Task", 128, NULL, 1, NULL);
 }
 
@@ -28,7 +28,7 @@ void redLedControllerTask(void *pvParameters){
     Serial.print("RedLEDProfiler\t\t :");
     Serial.println(RedLEDProfiler);
     //digitalWrite(RED, digitalRead(RED)^1);
-    delay(250);
+    vTaskDelay(pdMS_TO_TICKS(250));
   }
 }
 
@@ -39,7 +39,7 @@ void yellowLedControllerTask(void *pvParameters){
     Serial.print("YellowLEDProfiler\t :");
     Serial.println(YellowLEDProfiler);
     //digitalWrite(YELLOW, digitalRead(YELLOW)^1);
-    delay(250);
+    vTaskDelay(pdMS_TO_TICKS(250));
   }
 }
 
@@ -50,7 +50,7 @@ void greenLedControllerTask(void *pvParameters){
     Serial.print("GreenLEDProfiler\t :");
     Serial.println(GreenLEDProfiler);
     //digitalWrite(GREEN, digitalRead(GREEN)^1);
-    delay(250);
+    vTaskDelay(pdMS_TO_TICKS(250));
   }
 }
 
